@@ -1,0 +1,30 @@
+<!-- matrix_calculation_result.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Calculation Result</title>
+</head>
+<body>
+    <h1>Matrix Calculation Result</h1>
+    
+    {% if matrix %}
+    <h2>Uploaded Matrix:</h2>
+    <table>
+        {% for row in matrix %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Matrix Calculation Result:</h2>
+    <p>{{ result }}</p>
+    {% else %}
+    <p>Error: {{ result }}</p>
+    {% endif %}
+</body>
+</html>

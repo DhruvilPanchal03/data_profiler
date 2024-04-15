@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Calculation</title>
+</head>
+<body>
+    <h1>Matrix Calculation</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="matrix_data">Enter Matrix Data:</label><br>
+        <textarea id="matrix_data" name="matrix_data" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>

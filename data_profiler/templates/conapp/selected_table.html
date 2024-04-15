@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Data Profiler Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Table Data</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            .center {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body class="sb-nav-fixed">
+                        <div class="card mb-4" >
+                        <h3>Table Name - {{ selected_table }}</h3>
+                        </div>
+                        <div class="center">
+                            <div class="card-header">
+                                <h3>Matrix Calculate</h3>
+                            </div>
+                            <table border="1">
+                                <tr>
+                                    <th>Metrix</th>
+                                    <th>Value</th>
+                                </tr>
+                                {% for metric, value in metrics.items %}
+                                <tr>
+                                    <td>{{ metric }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                            <br>
+                            <table border="1">
+                                <tr>
+                                    <th>Column Name</th>
+                                    <th>Null Values Count</th>
+                                </tr>
+                                {% for column, null_count in metrics.null_values_per_column.items %}
+                                <tr>
+                                    <td>{{ column }}</td>
+                                    <td>{{ null_count }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                            <br>
+                            <br>
+                            <h4>Charts</h4>
+                            <img src="data:image/png;base64,{{ image_base64 }}" alt="Charts">
+                        </div>
+                        <div class="card center mb-4" >
+                            <br>
+                            <br>
+                            <h4><button type="submit"><a href="/">Dashboard</a></button></h4>
+                            </div>
+                        
+                        <br>
+                        <br>
+                        <div class="card center mb-4" >
+                            <h2>Table Name - {{ selected_table }}</h2>
+                            </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    {% for column in columns %}
+                                        <th>{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in table_data %}
+                                        <tr>
+                                            
+                                            {% for cell in row %}
+                                                <td>{{ cell }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Table Data - {{ selected_table }}</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for column in columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table_data %}
+                    <tr>
+                        Iterate over cells in the row
+                        {% for cell in row %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    <table border="1">
+        <tr>
+            <th>Metric</th>
+            <th>Value</th>
+        </tr>
+        {% for metric, value in metrics.items %}
+        <tr>
+            <td>{{ metric }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h4>{{df}}</h4>
+    <button type="submit"><a href="/signout">SignOut</a></button>
+    <button type="submit"><a href="/">Dashboard</a></button>
+</body>
+</html> -->
